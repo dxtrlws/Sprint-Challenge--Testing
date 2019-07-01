@@ -12,7 +12,7 @@ describe('Games server API', () => {
     expect(res.status).toBe(200);
     expect(res.body).toEqual(games);
   });
-  test('should add a new game ', async () => {
+  it('should add a new game ', async () => {
     const game = {
       title: 'Cyberpunk 2077',
       genre: 'Role-playing',
@@ -24,14 +24,14 @@ describe('Games server API', () => {
     expect(res.status).toBe(201);
     expect(res.body).toEqual(game);
   });
-  test('should return status 422 if missing title', async () => {
+  it('should return status 422 if missing title', async () => {
     const game = { genre: 'Role-playing', releaseYear: 2020 };
     const res = await request(server)
       .post('/games')
       .send(game);
     expect(res.status).toBe(422);
   });
-  test('should return status 422 if missing genre', async () => {
+  it('should return status 422 if missing genre', async () => {
     const game = { title: 'Cyberpunk 2077', releaseYear: 2020 };
     const res = await request(server)
       .post('/games')

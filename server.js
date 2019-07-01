@@ -19,8 +19,12 @@ server.get('/games', (req, res) => {
 
 server.post('/games', (req, res) => {
   const game = req.body;
-  games = [...games, game];
-  res.status(201).json(games[games.length - 1]);
+  if (!game.title || !game.genre) {
+    res.status(422).json({ message: 'Information is missing title or genre' });
+  } else {
+    games = [...games, game];
+    res.status(201).json(games[games.length - 1]);
+  }
 });
 
 module.exports = { server, games };
