@@ -13,4 +13,4 @@ server.get('/', (req, res) => {
     res.send('Up and running');
   });
 
-  module.exports = server
+  module.exports = { server, games}
