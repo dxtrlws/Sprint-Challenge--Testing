@@ -13,4 +13,8 @@ server.get('/', (req, res) => {
     res.send('Up and running');
   });
 
+  server.get('/games', (req, res) => {
+  res.status(200).json(games);
+});
+
   module.exports = { server, games}
